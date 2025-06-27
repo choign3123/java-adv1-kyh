@@ -6,7 +6,11 @@ public class SimpleListMainV2 {
 
     public static void main(String[] args) throws InterruptedException {
 //        test(new BasicList());
-        test(new SyncList());
+
+//        test(new SyncList());
+
+        // 클라이언트 -> SyncProxyList(프록시) -> BasicList(서버)
+        test(new SyncProxyList(new BasicList()));
     }
 
     private static void test(SimpleList list) throws InterruptedException {
