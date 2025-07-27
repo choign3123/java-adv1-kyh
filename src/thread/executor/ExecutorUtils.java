@@ -20,4 +20,19 @@ public abstract class ExecutorUtils {
             log(executorService);
         }
     }
+
+    // 추가
+    public static void printState(ExecutorService executorService, String taskName) {
+        if(executorService instanceof ThreadPoolExecutor poolExecutor) {
+            int pool = poolExecutor.getPoolSize(); // pool에 있는 스레드의 개수
+            int active = poolExecutor.getActiveCount(); // 작업을 수행중인 스레드의 개수
+            int queued = poolExecutor.getQueue().size(); // 큐에서 대기중인 작업의 개수
+            long completedTask = poolExecutor.getCompletedTaskCount(); // 완료된 작업의 개수
+
+            log(taskName + " -> [pool = " + pool + ", active = " + active + ", queuedTasks = " + queued +
+                    ", completedTask = " + completedTask + "]");
+        } else {
+            log(executorService);
+        }
+    }
 }
