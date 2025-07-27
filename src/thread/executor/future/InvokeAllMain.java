@@ -22,6 +22,8 @@ public class InvokeAllMain {
         List<CallableTask> tasks = List.of(task1, task2, task3);
 
         List<Future<Integer>> futures = es.invokeAll(tasks);
+
+        log("모든 작업 처리 완료");
         for(Future<Integer> future : futures) {
             Integer result = future.get();
             log("value = " + result);
